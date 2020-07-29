@@ -20,6 +20,7 @@ function* rootSaga() {
   // This is where you register the Sagas
 
   yield takeEvery('GET_BASKET_DATA', getBasket);
+  yield takeEvery('ADD_TO_BASKET', addFruitToBasket);
 }
 
 // Create sagaMiddleware
@@ -51,6 +52,17 @@ function* getBasket(action) {
       payload: response.data,
     });
     console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* addFruitToBasket(action) {
+  try {
+    yield axios.post('/fruit', action.payload);
+    yield put({
+      type: 'GET_BASKET_DATA',
+    });
   } catch (err) {
     console.log(err);
   }
