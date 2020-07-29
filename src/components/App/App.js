@@ -3,9 +3,17 @@ import './App.css';
 import Header from '../Header/Header.js';
 import FruitList from '../FruitList/FruitList.js';
 import FruitSelector from '../FruitSelector/FruitSelector.js';
-
+import { connect } from 'react-redux';
 class App extends Component {
   // Renders the entire app on the DOM
+
+  componentDidMount() {
+    this.props.dispatch({
+      // calls to a a Saga set to listen for GET_BASKET_DATA
+      type: 'GET_BASKET_DATA',
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
