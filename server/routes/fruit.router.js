@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
 // Remove an item from the array with a matching id
 router.delete('/:id', (req, res) => {
   let index = 0;
-  console.log(req.params.id);
   // loop over all the items in the basket
   for (const item of basket) {
     // check to see if the id matches
