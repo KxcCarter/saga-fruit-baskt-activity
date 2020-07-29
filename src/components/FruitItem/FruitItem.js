@@ -1,42 +1,32 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import { Button, Icon, Box } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class FruitItem extends Component {
   removeItem = () => {
-    // axios({
-    //     method: 'DELETE',
-    //     url: `/fruit/${this.props.basketItem.id}`
-    // }).then((response) => {
-    //     this.getFruit();
-    // }).catch((error) => {
-    //     console.log(error);
-    //     alert('Unable to delete item');
-    // });
-
     this.props.dispatch({
       type: 'DELETE_FROM_BASKET',
       payload: { id: this.props.basketItem.id },
     });
   };
 
-  // getFruit() {
-  //     axios({
-  //         method: 'GET',
-  //         url: '/fruit'
-  //     }).then((response) => {
-  //         const action = { type: 'SET_BASKET', payload: response.data };
-  //         this.props.dispatch(action);
-  //     }).catch((error) => {
-  //         alert('Unable to get basket from server');
-  //     });
-  // }
-
   render() {
     return (
       <li>
-        <span>{this.props.basketItem.fruit}</span>
-        <button onClick={this.removeItem}>Remove</button>
+        {' '}
+        <Box m={1}>
+          <span>{this.props.basketItem.fruit}</span>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            startIcon={<DeleteIcon />}
+            onClick={this.removeItem}
+          >
+            Delete
+          </Button>
+        </Box>
       </li>
     );
   }

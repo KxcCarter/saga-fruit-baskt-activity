@@ -71,7 +71,6 @@ function* addFruitToBasket(action) {
 
 function* deleteFromBasket(action) {
   try {
-    console.log('payload dispatched from FruitItem:', action.payload.id);
     yield axios.delete(`/fruit/${action.payload.id}`);
     yield put({
       type: 'GET_BASKET_DATA',

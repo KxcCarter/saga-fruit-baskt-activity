@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+
+// --- Material-UI ---
+import { Button, Box } from '@material-ui/core';
 
 class FruitSelector extends Component {
   addFruit = (fruitName) => (event) => {
@@ -14,10 +16,36 @@ class FruitSelector extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.addFruit('Apple')}>Add Apple</button>
-        <button onClick={this.addFruit('Orange')}>Add Orange</button>
-        <button onClick={this.addFruit('Watermelon')}>Add Watermellon</button>
-        <button onClick={this.addFruit('Grapefruit')}>Add Grapefruit</button>
+        <Box>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.addFruit('Apple')}
+          >
+            Add Apple
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.addFruit('Orange')}
+          >
+            Add Orange
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.addFruit('Watermelon')}
+          >
+            Add Watermellon
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.addFruit('Grapefruit')}
+          >
+            Add Grapefruit
+          </Button>
+        </Box>
       </div>
     );
   }
