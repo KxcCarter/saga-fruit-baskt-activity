@@ -21,6 +21,7 @@ function* rootSaga() {
 
   yield takeEvery('GET_BASKET_DATA', getBasket);
   yield takeEvery('ADD_TO_BASKET', addFruitToBasket);
+  yield takeEvery('DELETE_FROM_BASKET', deleteFromBasket);
 }
 
 // Create sagaMiddleware
@@ -60,6 +61,18 @@ function* getBasket(action) {
 function* addFruitToBasket(action) {
   try {
     yield axios.post('/fruit', action.payload);
+    yield put({
+      type: 'GET_BASKET_DATA',
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* deleteFromBasket(action) {
+  try {
+    console.log('payload dispatched from FruitItem:', action.payload.id);
+    yield axios.delete(`/fruit/${action.payload.id}`);
     yield put({
       type: 'GET_BASKET_DATA',
     });
